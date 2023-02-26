@@ -1,0 +1,4 @@
+config:
+  openweathermap:
+    baseUrl: https://samples.openweathermap.org
+    endpoint: /data/2.5/forecast?q=%s,%s&appid=b69 07d289e10d714a6e88b30761fae22
