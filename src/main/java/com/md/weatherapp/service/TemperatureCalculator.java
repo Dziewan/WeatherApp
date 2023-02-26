@@ -13,12 +13,12 @@ public class TemperatureCalculator {
     private final List<TemperatureData> temperatureDataList;
     private final BigDecimal temperatureDataListSize;
 
-    public TemperatureCalculator(@NonNull final List<WeatherData> temperatureDataList) {
-        this.temperatureDataList = temperatureDataList
+    public TemperatureCalculator(@NonNull final List<WeatherData> weatherDataList) {
+        this.temperatureDataList = weatherDataList
                 .stream()
                 .map(WeatherData::getTemperatureData)
                 .collect(Collectors.toList());
-        this.temperatureDataListSize = new BigDecimal(temperatureDataList.size());
+        this.temperatureDataListSize = new BigDecimal(weatherDataList.size());
     }
 
     public BigDecimal calculateAverageTemperature() {
