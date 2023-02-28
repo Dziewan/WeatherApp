@@ -3,7 +3,6 @@ package com.md.weatherapp.service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import com.md.weatherapp.model.openweathermap.TemperatureData;
 import com.md.weatherapp.model.openweathermap.WeatherData;
@@ -33,10 +32,10 @@ public class TemperatureCalculator {
         return calculateAverage(TemperatureData::getHumidity);
     }
 
-    private BigDecimal calculateAverage(Function<TemperatureData, BigDecimal> parameterExtractor) {
+    private BigDecimal calculateAverage(Extractor<TemperatureData, BigDecimal> parameterExtractor) {
         return temperatureDataList
                 .stream()
-                .map(parameterExtractor)
+                .map(parameterExtractor::extract)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(temperatureDataListSize, RoundingMode.CEILING);
     }
